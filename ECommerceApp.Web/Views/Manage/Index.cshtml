@@ -1,0 +1,26 @@
+﻿@model ECommerceApp.Web.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Roller:</dt>
+        <dd>
+            @Html.ActionLink("Yönet", "Index", "Roles")
+        </dd>
+        <dt>Kullanıcı Rolleri:</dt>
+        <dd>
+            @Html.ActionLink("Yönet", "Index", "UserRole")
+        </dd>
+        <dt>Ürünler:</dt>
+        <dd>
+            @Html.ActionLink("Yönet", "Index", "Product")
+        </dd>
+    </dl>
+</div>
