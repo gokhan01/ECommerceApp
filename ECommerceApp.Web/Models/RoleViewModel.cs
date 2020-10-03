@@ -6,7 +6,7 @@ namespace ECommerceApp.Web.Models
     {
         public string Id { get; set; }
         [Required]
-        [Display(Name = "RoleName")]
+        [Display(Name = "Role Name")]
         public string Name { get; set; }
     }
 }

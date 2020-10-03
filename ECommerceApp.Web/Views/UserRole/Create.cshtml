@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Kullanıcı Yetkilendirme";
+    ViewBag.Title = "Authorization";
 }
 @model string
 <hgroup class="title">
@@ -13,11 +13,16 @@
     @Html.Hidden("UserId", Model);
 
     <fieldset class="form-horizontal">
-        <h4>Kullanıcı Yetkilendirme</h4>
         <hr />
-        @Html.DropDownList("RoleId", "Seçiniz")
+
+        <div class="form-group">
+            @Html.Label("", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("RoleId", (IEnumerable<SelectListItem>)ViewBag.RoleId,"Choose Role", new { @class = "form-control" })
+            </div>
+        </div>
         <div class="form-actions no-color">
-            <input type="submit" value="Kaydet" class="btn" />
+            <input type="submit" value="Create" class="btn" />
         </div>
     </fieldset>
 }

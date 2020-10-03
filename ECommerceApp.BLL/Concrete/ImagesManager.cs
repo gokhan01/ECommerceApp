@@ -1,19 +1,28 @@
 ﻿using EcommerceApp.DAL.Abstract;
 using EcommerceApp.DAL.Concrete.Models;
+using ECommerceApp.BLL.Abstract;
+using System;
 
 namespace ECommerceApp.BLL.Concrete
 {
-    public class ImagesManager
+    public class ImagesManager : IImagesManager
     {
-        private readonly IImagesRepository _imagesRepository;
-        public ImagesManager(IImagesRepository imagesRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public ImagesManager(IUnitOfWork unitOfWork)
         {
-            _imagesRepository = imagesRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public void Create(Images image)
         {
-            _imagesRepository.Insert(image);
+            _unitOfWork.ImagesRepository.Insert(image);
+            _unitOfWork.Commit();
+        }
+
+        public bool Delete(Guid id)
+        {
+            _unitOfWork.ImagesRepository.Delete(id);
+            return _unitOfWork.Commit();
         }
     }
 }

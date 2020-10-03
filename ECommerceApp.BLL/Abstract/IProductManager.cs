@@ -1,13 +1,16 @@
 ﻿using ECommerceApp.BLL.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ECommerceApp.BLL.Abstract
 {
     public interface IProductManager
     {
-        List<ProductListVM> GetList();
+        List<ProductListVM> GetNameList();
+        List<ProductVM> GetList();
         void Create(ProductVM model);
         void Edit(ProductVM model);
-        ProductVM GetById(string id);
+        bool Delete(Guid id);
+        ProductVM GetById(Guid id);
     }
 }

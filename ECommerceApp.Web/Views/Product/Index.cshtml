@@ -1,18 +1,18 @@
 ﻿@{
-    ViewBag.Title = "Ürün Listesi";
+    ViewBag.Title = "Products";
 }
 @model List<ECommerceApp.BLL.Models.ProductListVM>
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Ürün Oluştur", "Create")
+    @Html.ActionLink("Create Product", "Create")
 </p>
 
 <table class="table">
     <tr>
         <th>
-            Kullanıcılar
+            Products
         </th>
     </tr>
 
@@ -23,11 +23,35 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Create", "Create", new { id = item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                <a href="javascript:void(0);" onclick="Delete('@item.Id',this)">Delete</a>
             </td>
         </tr>
     }
 
 </table>
+
+@section Scripts{
+    <script>
+        function Delete(id,element) {
+            console.log(element)
+           if (confirm('Do you really want to delete this item?')) {
+               $.ajax({
+                   url: '@Url.Action("Delete")',
+                   type: 'POST',
+                   data: { id }
+               }).done(function (data) {
+                   if (data.Result == "OK") {
+                       element.closest('tr').remove();
+                   }
+                   else if (data.Result.Message) {
+                       alert(data.Result.Message);
+                   }
+               }).fail(function () {
+                   alert("There is something wrong. Please try again.");
+               });
+           }
+        }
+    </script>
+}

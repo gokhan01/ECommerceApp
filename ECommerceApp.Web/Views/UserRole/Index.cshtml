@@ -1,17 +1,14 @@
 ﻿@model List<EcommerceApp.DAL.Concrete.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Authorization";
 }
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Yetkilendirme", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            Kullanıcılar
+            Users
         </th>
     </tr>
 
@@ -22,7 +19,7 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @Html.ActionLink("Yetkilendir", "Create", new { userId = item.Id })
+                @Html.ActionLink("Authorize", "Create", new { userId = item.Id })
                 @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
                 @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>

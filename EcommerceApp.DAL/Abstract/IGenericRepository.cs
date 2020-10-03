@@ -12,7 +12,7 @@ namespace EcommerceApp.DAL.Abstract
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "");
-        TEntity GetByID(object id);
+        TEntity GetByID(Guid id);
         TEntity Insert(TEntity entity);
         void Delete(object id);
         void Delete(TEntity entityToDelete);

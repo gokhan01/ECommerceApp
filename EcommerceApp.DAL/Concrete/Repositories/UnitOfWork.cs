@@ -41,9 +41,9 @@ namespace EcommerceApp.DAL.Concrete.Repositories
             }
         }
 
-        public void Commit()
+        public bool Commit()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges() > 0;
         }
 
         private bool disposed = false;

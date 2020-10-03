@@ -48,7 +48,7 @@ namespace EcommerceApp.DAL.Concrete.Repositories
             }
         }
 
-        public virtual TEntity GetByID(object id)
+        public virtual TEntity GetByID(Guid id)
         {
             return dbSet.Find(id);
         }

@@ -4,6 +4,6 @@
     {
         IProductsRepository ProductsRepository { get; }
         IImagesRepository ImagesRepository { get; }
-        void Commit();
+        bool Commit();
     }
 }

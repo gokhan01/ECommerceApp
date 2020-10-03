@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerceApp.BLL.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,14 @@ namespace ECommerceApp.Web.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        private readonly IProductManager _productManager;
+        public HomeController(IProductManager productManager)
+        {
+            _productManager = productManager;
+        }
         public ActionResult Index()
         {
-            return View();
+            return View(_productManager.GetList());
         }
     }
 }

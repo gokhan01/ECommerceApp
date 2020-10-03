@@ -105,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IImagesManager.cs" />
     <Compile Include="Abstract\IProductManager.cs" />
     <Compile Include="Concrete\ImagesManager.cs" />
     <Compile Include="Helpers\Attributes\FileAttribute.cs" />

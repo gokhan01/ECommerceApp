@@ -11,6 +11,11 @@ namespace ECommerceApp.BLL.Helpers.Attributes
         public string[] FileTypes { get; set; }
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            if (value is HttpPostedFileBase && value == null || value is IEnumerable<HttpPostedFileBase> && ((IEnumerable<HttpPostedFileBase>)value).Any(x => x == null))
+            {
+                return ValidationResult.Success;
+            }
+
             if (value is HttpPostedFileBase)
             {
                 return ValidateSingleFile((HttpPostedFileBase)value);
