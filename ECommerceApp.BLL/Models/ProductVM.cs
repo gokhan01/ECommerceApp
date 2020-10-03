@@ -10,19 +10,19 @@ namespace ECommerceApp.BLL.Models
     {
         public Guid Id { get; set; }
 
-        [Required]
+        [Required, MaxLength(150)]
         public string Name { get; set; }
 
-        [Required]
+        [Required, MaxLength(100)]
         public string Barcode { get; set; }
 
-        [Required, Display(Name = "Unit Price")]
+        [Required, Display(Name = "Unit Price"), Range(0, double.MaxValue, ErrorMessage = "Please enter valid number")]
         public decimal UnitPrice { get; set; }
 
-        [Required]
+        [Required, MaxLength(255)]
         public string Description { get; set; }
 
-        [Required, Display(Name = "Units In Stock")]
+        [Required, Display(Name = "Units In Stock"), Range(0, int.MaxValue, ErrorMessage = "Please enter valid number")]
         public int UnitsInStock { get; set; }
 
         [File(FileTypes = new string[] { "image/png", "image/jpeg", "image/jpg" })]
